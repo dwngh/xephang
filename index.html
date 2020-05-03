@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Xếp hạng</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.0.min.js"
+      integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+      crossorigin="anonymous">
+    </script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style media="screen">
+      .container{
+        background-color:#e5e5e5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Điền thông tin</h1>
+      <ul>
+        <li>
+          <h3 style = "color:red"><b><i>Mỗi người chỉ được phép nhập duy nhất 1 lần</i></b></h3>
+          <div class="row" style = "margin:20px;border-style:solid;padding:20px;">
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Họ và tên</label>
+                <div class="col-sm-10">
+                  <input   class="form-control" id="name" placeholder="Họ và tên">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Trường</label>
+                <div class="col-sm-10">
+                  <input   class="form-control" id="school" placeholder="Trường">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Khối</label>
+                <div class="col-sm-10">
+                  <select class="form-control form-control-sm" id = "class">
+                    <option>A00</option>
+                    <option>A01</option>
+                    <option>D01</option>
+                    <option>D02</option>
+                    <option>D03</option>
+                    <option>D04</option>
+                    <option>D06</option>
+                    <option>D07</option>
+                  </select>
+                </div>
+            </div>
+            <div class="form-group row">
+              <script type="text/javascript">
+                var sercretKey = "$2b$10$Glc9YAVZIRrYWFrmmsG.TOrOe9HxmZ.edLkcEwLZ0/0.Pf6bmoNKy";
+              </script>
+                <div class="col-sm-4">
+                  <input   class="form-control" id="sub1" placeholder="Điểm trung bình 5 kì môn 1">
+                </div>
+                <div class="col-sm-4">
+                  <input   class="form-control" id="sub2" placeholder="Điểm trung bình 5 kì môn 2">
+                </div>
+                <div class="col-sm-4">
+                  <input   class="form-control" id="sub3" placeholder="Điểm trung bình 5 kì môn 3">
+                </div>
+                <div class="col-sm-6">
+                  <input   class="form-control" id="sub4" placeholder="Điểm giải">
+                </div>
+                <div class="col-sm-6">
+                  <input   class="form-control" id="sub5" placeholder="Điểm ưu tiên">
+                </div>
+                <br>
+                <div class="col-sm-4">
+                </div>
+                <button class = "btn btn-success col-sm-4" onclick="sendInfo()">Nộp</button>
+                <div class="col-sm-4"></div>
+            </div>
+          </div>
+        </li>
+        <li><button class="btn" onclick="render()">Xếp hạng</button></li>
+        <table class="table table-hover" id = "result">
+
+        </table>
+      </ul>
+    </div>
+  <script src="js/submit.js" charset="utf-8"></script>
+  </body>
+</html>
