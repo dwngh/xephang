@@ -27,7 +27,7 @@ function sendInfo(){
   req1.onreadystatechange = () => {
     if (req1.readyState == XMLHttpRequest.DONE) {
       if (document.cookie != "alreadySet")
-      $.getJSON('http://ipinfo.io', function(data){
+      $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
         console.log(data);
         let info = getInfo();
         info.ip = data.ip;
