@@ -95,10 +95,6 @@ function render(value){
       let list = []
       for (i= 0; i< prep.length; i++) if (prep[i].nv[value] == 1) list.push(prep[i]);
       for (i = 0; i < list.length; i++){
-        color = "bg-primary";
-        for (j = 0; j < value; j++){
-          if (list[i].nv[j] == 1) color = "bg-warning";
-        }
         console.log("<tr class='" + color + "'><td>"+ i.toString() + "</td><td>" + list[i].name + "</td><td>" + list[i].class + "</td><td>" + list[i].school + "</td><td>" + (list[i].sub1 + list[i].sub2 + list[i].sub3 + list[i].sub4 + list[i].sub5).toString() + "</td></tr>");
         r+= "<tr class = '" + color + "'><td>"+ (i+1).toString() + "</td><td>" + list[i].name + "</td><td>" + list[i].class + "</td><td>" + list[i].school + "</td><td>" + (list[i].sub1 + list[i].sub2 + list[i].sub3 + list[i].sub4 + list[i].sub5).toString() + "</td></tr>";
 
