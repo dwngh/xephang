@@ -15,6 +15,7 @@ function getInfo(){
   user.school = document.getElementById("school").value;
   user.class = document.getElementById("class").value;
   user.sub1 = parseFloat(document.getElementById("sub1").value);
+  console.log(sub1);
   user.sub2 = parseFloat(document.getElementById("sub2").value);
   user.sub3 = parseFloat(document.getElementById("sub3").value);
   user.sub4 = parseFloat(document.getElementById("sub4").value);
