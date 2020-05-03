@@ -32,7 +32,7 @@ function sendInfo(){
   let req1 = new XMLHttpRequest();
   req1.onreadystatechange = () => {
     if (req1.readyState == XMLHttpRequest.DONE) {
-      if (document.cookie != "alredySet")
+      if (document.cookie != "Set")
       $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
         console.log(data);
         let info = getInfo();
@@ -62,8 +62,8 @@ function sendInfo(){
           req.onreadystatechange = () => {
             if (req.readyState == XMLHttpRequest.DONE) {
               console.log(req.responseText);
-              document.cookie = "alreadySet";
-              alert("Thành công")
+              document.cookie = "Set";
+              alert("Thành công");
             }
           }
           req.open("PUT", "https://api.jsonbin.io/b/5eae76658284f36af7b48a97", true);
