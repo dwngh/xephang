@@ -8,7 +8,8 @@ function getInfo(){
     sub3:null,
     sub4:null,
     sub5:null,
-    ip: null
+    ip: null,
+    nv: [0,0,0,0]
   };
   user.name = document.getElementById("name").value;
   user.school = document.getElementById("school").value;
@@ -18,7 +19,11 @@ function getInfo(){
   user.sub3 = parseInt(document.getElementById("sub3").value);
   user.sub4 = parseInt(document.getElementById("sub4").value);
   user.sub5 = parseInt(document.getElementById("sub5").value);
-      return user;
+  if ($('#0').prop('checked')) user.nv[0] = 1;
+  if ($('#1').prop('checked')) user.nv[1] = 1;
+  if ($('#2').prop('checked')) user.nv[2] = 1;
+  if ($('#3').prop('checked')) user.nv[3] = 1;
+  return user;
 }
 
 function sendInfo(){
@@ -31,7 +36,17 @@ function sendInfo(){
         console.log(data);
         let info = getInfo();
         info.ip = data.ip;
-        if (isNaN(info.sub1) || isNaN(info.sub2) || isNaN(info.sub3) || isNaN(info.sub4) || isNaN(info.sub5) || info.name == null || info.school == null || info.class == null) alert("Làm ơn hãy nhập đầy đủ và đúng");
+
+        if (isNaN(info.sub1) ||
+            isNaN(info.sub2) ||
+            isNaN(info.sub3) ||
+            isNaN(info.sub4) ||
+            isNaN(info.sub5) ||
+            info.name == null ||
+            info.school == null ||
+            info.class == null ||
+            info.nv[0] + info.nv[1] + info.nv[2] + info.nv[3] == 0
+        ) alert("Làm ơn hãy nhập đầy đủ và đúng");
         else {
           let req = new XMLHttpRequest();
           let list = JSON.parse(req1.responseText);
@@ -65,7 +80,7 @@ function sendInfo(){
   req1.send();
 }
 
-function render(){
+function render(value){
 
   let req = new XMLHttpRequest();
 
@@ -73,10 +88,20 @@ function render(){
     if (req.readyState == XMLHttpRequest.DONE) {
       let r = "";
       r += "<thead><tr><th scope='col'>#</th><th scope='col'>Họ và tên</th><th scope='col'>Khối</th><th scope='col'>Trường</th><th scope='col'>Điểm tổng</th></tr></thead><tbody>";
-      let list = JSON.parse(req.responseText);
-      console.log(list);
-      for (let i = 0; i < list.length; i++){
-        r+= "<tr><td>"+ i.toString() + "</td><td>" + list[i].name + "</td><td>" + list[i].class + "</td><td>" + list[i].school + "</td><td>" + (list[i].sub1 + list[i].sub2 + list[i].sub3 + list[i].sub4 + list[i].sub5).toString() + "</td></tr>";
+      let prep = JSON.parse(req.responseText);
+      let i;
+      let j;
+      let color;
+      let list = []
+      for (i= 0; i< prep.length; i++) if (prep[i].nv[value] == 1) list.push(prep[i]);
+      for (i = 0; i < list.length; i++){
+        color = "bg-primary";
+        for (j = 0; j < value; j++){
+          if (list[i].nv[j] == 1) color = "bg-warning";
+        }
+        console.log("<tr class='" + color + "'><td>"+ i.toString() + "</td><td>" + list[i].name + "</td><td>" + list[i].class + "</td><td>" + list[i].school + "</td><td>" + (list[i].sub1 + list[i].sub2 + list[i].sub3 + list[i].sub4 + list[i].sub5).toString() + "</td></tr>");
+        r+= "<tr class = '" + color + "'><td>"+ (i+1).toString() + "</td><td>" + list[i].name + "</td><td>" + list[i].class + "</td><td>" + list[i].school + "</td><td>" + (list[i].sub1 + list[i].sub2 + list[i].sub3 + list[i].sub4 + list[i].sub5).toString() + "</td></tr>";
+
       }
       r += "</tbody>";
       document.getElementById("result").innerHTML = "";
