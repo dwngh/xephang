@@ -14,11 +14,11 @@ function getInfo(){
   user.name = document.getElementById("name").value;
   user.school = document.getElementById("school").value;
   user.class = document.getElementById("class").value;
-  user.sub1 = parseInt(document.getElementById("sub1").value);
-  user.sub2 = parseInt(document.getElementById("sub2").value);
-  user.sub3 = parseInt(document.getElementById("sub3").value);
-  user.sub4 = parseInt(document.getElementById("sub4").value);
-  user.sub5 = parseInt(document.getElementById("sub5").value);
+  user.sub1 = parseFloat(document.getElementById("sub1").value);
+  user.sub2 = parseFloat(document.getElementById("sub2").value);
+  user.sub3 = parseFloat(document.getElementById("sub3").value);
+  user.sub4 = parseFloat(document.getElementById("sub4").value);
+  user.sub5 = parseFloat(document.getElementById("sub5").value);
   if ($('#0').prop('checked')) user.nv[0] = 1;
   if ($('#1').prop('checked')) user.nv[1] = 1;
   if ($('#2').prop('checked')) user.nv[2] = 1;
