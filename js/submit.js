@@ -32,8 +32,6 @@ function sendInfo(){
   let req1 = new XMLHttpRequest();
   req1.onreadystatechange = () => {
     if (req1.readyState == XMLHttpRequest.DONE) {
-      Alert(req1.responseText);
-      Alert(req1);
       if (document.cookie != "Set")
       $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
         console.log(data);
